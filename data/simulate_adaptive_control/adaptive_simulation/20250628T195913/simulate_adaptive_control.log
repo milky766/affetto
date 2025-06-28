@@ -1,0 +1,40 @@
+2025-06-28 19:59:13,432 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 19:59:13,432 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 19:59:13,432 (event_logging:166) [DEBUG]: Log filename: data/simulate_adaptive_control/adaptive_simulation/20250628T195913/simulate_adaptive_control.log
+2025-06-28 19:59:13,432 (event_logging:168) [DEBUG]: Command: python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T181101/trained_model.joblib -r ../20241203T144115/step/sync/fast/motion_data_059.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+2025-06-28 19:59:13,434 (data_handling:162) [DEBUG]: Directory created: data/simulate_adaptive_control/adaptive_simulation/20250628T195913/config
+2025-06-28 19:59:13,444 (data_handling:180) [DEBUG]: Model config copied: None -> data/simulate_adaptive_control/adaptive_simulation/20250628T195913/config
+2025-06-28 19:59:13,444 (simulate_adaptive_control:239) [INFO]: Config: apps/config/adaptive_model.toml
+2025-06-28 19:59:13,444 (simulate_adaptive_control:240) [INFO]: Output directory: data/simulate_adaptive_control/adaptive_simulation/20250628T195913
+2025-06-28 19:59:13,444 (simulate_adaptive_control:241) [INFO]: N_min: 1, N_max: 20, Active Joints: [5]
+2025-06-28 19:59:13,517 (simulate_adaptive_control:251) [INFO]: --- DEBUG INFO ---
+2025-06-28 19:59:13,517 (simulate_adaptive_control:252) [INFO]: args.max_steps is set to: 1000
+2025-06-28 19:59:13,517 (simulate_adaptive_control:253) [INFO]: Length of reference_df (total_ref_len) is: 1801
+2025-06-28 19:59:13,518 (simulate_adaptive_control:254) [INFO]: --------------------
+2025-06-28 19:59:13,518 (simulate_adaptive_control:109) [INFO]: AdaptiveController initialized. N_range=[1, 20], initial_tau=1
+2025-06-28 19:59:13,522 (simulate_adaptive_control:267) [INFO]: Starting simulation with new local search algorithm...
+2025-06-28 19:59:13,523 (simulate_adaptive_control:280) [INFO]: Processing step: 0 / 1000
+2025-06-28 19:59:13,825 (simulate_adaptive_control:145) [INFO]: τ changed from 1 to 2 (R^2 improved: 0.9219 -> 0.9342)
+2025-06-28 19:59:13,834 (simulate_adaptive_control:145) [INFO]: τ changed from 2 to 3 (R^2 improved: 0.9395 -> 0.9828)
+2025-06-28 19:59:13,926 (simulate_adaptive_control:145) [INFO]: τ changed from 3 to 2 (R^2 improved: 0.9254 -> 0.9365)
+2025-06-28 19:59:13,958 (simulate_adaptive_control:280) [INFO]: Processing step: 100 / 1000
+2025-06-28 19:59:14,307 (simulate_adaptive_control:145) [INFO]: τ changed from 2 to 1 (R^2 improved: 0.9120 -> 0.9224)
+2025-06-28 19:59:14,403 (simulate_adaptive_control:280) [INFO]: Processing step: 200 / 1000
+2025-06-28 19:59:14,531 (simulate_adaptive_control:145) [INFO]: τ changed from 1 to 2 (R^2 improved: 0.9206 -> 0.9434)
+2025-06-28 19:59:14,846 (simulate_adaptive_control:280) [INFO]: Processing step: 300 / 1000
+2025-06-28 19:59:15,289 (simulate_adaptive_control:280) [INFO]: Processing step: 400 / 1000
+2025-06-28 19:59:15,729 (simulate_adaptive_control:280) [INFO]: Processing step: 500 / 1000
+2025-06-28 19:59:16,171 (simulate_adaptive_control:280) [INFO]: Processing step: 600 / 1000
+2025-06-28 19:59:16,629 (simulate_adaptive_control:280) [INFO]: Processing step: 700 / 1000
+2025-06-28 19:59:17,077 (simulate_adaptive_control:280) [INFO]: Processing step: 800 / 1000
+2025-06-28 19:59:17,123 (simulate_adaptive_control:145) [INFO]: τ changed from 2 to 3 (R^2 improved: 0.9251 -> 0.9358)
+2025-06-28 19:59:17,390 (simulate_adaptive_control:145) [INFO]: τ changed from 3 to 4 (R^2 improved: 0.9055 -> 0.9175)
+2025-06-28 19:59:17,399 (simulate_adaptive_control:145) [INFO]: τ changed from 4 to 5 (R^2 improved: 0.9241 -> 0.9976)
+2025-06-28 19:59:17,527 (simulate_adaptive_control:280) [INFO]: Processing step: 900 / 1000
+2025-06-28 19:59:17,839 (simulate_adaptive_control:145) [INFO]: τ changed from 5 to 4 (R^2 improved: 0.9356 -> 0.9472)
+2025-06-28 19:59:17,906 (simulate_adaptive_control:145) [INFO]: τ changed from 4 to 5 (R^2 improved: 0.9286 -> 0.9393)
+2025-06-28 19:59:17,967 (simulate_adaptive_control:351) [INFO]: Simulation finished.
+2025-06-28 19:59:18,008 (simulate_adaptive_control:355) [INFO]: Simulation results saved to data/simulate_adaptive_control/adaptive_simulation/20250628T195913/adaptive_simulation_results.csv
+2025-06-28 19:59:18,008 (simulate_adaptive_control:157) [INFO]: Generating simulation result plots...
+2025-06-28 19:59:18,909 (simulate_adaptive_control:183) [INFO]: Saved prediction plot: data/simulate_adaptive_control/adaptive_simulation/20250628T195913/prediction_vs_true_j5.png
+2025-06-28 19:59:19,246 (simulate_adaptive_control:217) [INFO]: Saved R^2 evolution plot: data/simulate_adaptive_control/adaptive_simulation/20250628T195913/r2_and_tau_evolution.png

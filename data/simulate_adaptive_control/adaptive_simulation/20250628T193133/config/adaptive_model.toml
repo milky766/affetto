@@ -1,0 +1,34 @@
+################################################################################
+# 適応制御モデル用 設定ファイル
+#
+# ・Adapter: multi-horizon
+#   - 私たちが新たに定義する、特殊なマルチホライズン学習用のデータハンドラ
+#   - max_preview_step で最大プレビュー長 N を指定する
+#
+# ・その他（Scaler, Regressor）は既存の設定を流用可能
+################################################################################
+
+[model]
+  # --- ★ここからが主な変更点 ---
+  [model.adapter]
+  # model_utility.pyのDATA_ADAPTER_MAPに登録する新しい名前を指定
+  name = "single-shot-multi-horizon"
+  
+  # MultiHorizonParamsで定義するパラメータを指定
+# 既存のmodel.tomlから設定値を引き継ぐ
+  active_joints = [5]
+  dt = 0.03333333333
+  ctrl_step = 1
+  min_preview_step = 1 
+  max_preview_step = 20
+
+
+  # --- ここまでは既存の設定と同じでOK ---
+  [model.scaler]
+  name = "std"
+
+  [model.regressor]
+  name = "mlp"
+  hidden_layer_sizes = [100, 100] 
+  activation = "tanh"
+  max_iter = 2000

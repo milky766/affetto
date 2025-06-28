@@ -1,0 +1,30 @@
+2025-06-28 19:42:04,684 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 19:42:04,684 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 19:42:04,685 (event_logging:166) [DEBUG]: Log filename: data/simulate_adaptive_control/adaptive_simulation/20250628T194204/simulate_adaptive_control.log
+2025-06-28 19:42:04,685 (event_logging:168) [DEBUG]: Command: python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T181101/trained_model.joblib -r tests/data/motion_data_000.csv -c apps/config/adaptive_model.toml --max-steps 2000 --hysteresis-threshold 0.05
+2025-06-28 19:42:04,686 (data_handling:162) [DEBUG]: Directory created: data/simulate_adaptive_control/adaptive_simulation/20250628T194204/config
+2025-06-28 19:42:04,695 (data_handling:180) [DEBUG]: Model config copied: None -> data/simulate_adaptive_control/adaptive_simulation/20250628T194204/config
+2025-06-28 19:42:04,695 (simulate_adaptive_control:239) [INFO]: Config: apps/config/adaptive_model.toml
+2025-06-28 19:42:04,695 (simulate_adaptive_control:240) [INFO]: Output directory: data/simulate_adaptive_control/adaptive_simulation/20250628T194204
+2025-06-28 19:42:04,696 (simulate_adaptive_control:241) [INFO]: N_min: 1, N_max: 20, Active Joints: [5]
+2025-06-28 19:42:04,724 (simulate_adaptive_control:251) [INFO]: --- DEBUG INFO ---
+2025-06-28 19:42:04,724 (simulate_adaptive_control:252) [INFO]: args.max_steps is set to: 2000
+2025-06-28 19:42:04,725 (simulate_adaptive_control:253) [INFO]: Length of reference_df (total_ref_len) is: 301
+2025-06-28 19:42:04,725 (simulate_adaptive_control:254) [INFO]: --------------------
+2025-06-28 19:42:04,725 (simulate_adaptive_control:109) [INFO]: AdaptiveController initialized. N_range=[1, 20], initial_tau=1
+2025-06-28 19:42:04,729 (simulate_adaptive_control:267) [INFO]: Starting simulation with new local search algorithm...
+2025-06-28 19:42:04,729 (simulate_adaptive_control:280) [INFO]: Processing step: 0 / 2000
+2025-06-28 19:42:04,739 (simulate_adaptive_control:145) [INFO]: τ changed from 1 to 2 (R^2 improved: -487.6632 -> -111.0776)
+2025-06-28 19:42:04,748 (simulate_adaptive_control:145) [INFO]: τ changed from 2 to 3 (R^2 improved: -23.3775 -> -4.0369)
+2025-06-28 19:42:04,757 (simulate_adaptive_control:145) [INFO]: τ changed from 3 to 4 (R^2 improved: -1.6075 -> 0.3532)
+2025-06-28 19:42:04,767 (simulate_adaptive_control:145) [INFO]: τ changed from 4 to 5 (R^2 improved: 0.7266 -> 0.9677)
+2025-06-28 19:42:05,176 (simulate_adaptive_control:280) [INFO]: Processing step: 100 / 2000
+2025-06-28 19:42:05,623 (simulate_adaptive_control:280) [INFO]: Processing step: 200 / 2000
+2025-06-28 19:42:05,984 (simulate_adaptive_control:286) [INFO]: !!! Break condition met at step 281:
+2025-06-28 19:42:05,984 (simulate_adaptive_control:287) [INFO]: !!! step(281) + N_max(20) >= total_ref_len(301)
+2025-06-28 19:42:05,985 (simulate_adaptive_control:288) [INFO]: !!! Loop will now break.
+2025-06-28 19:42:05,985 (simulate_adaptive_control:351) [INFO]: Simulation finished.
+2025-06-28 19:42:06,003 (simulate_adaptive_control:355) [INFO]: Simulation results saved to data/simulate_adaptive_control/adaptive_simulation/20250628T194204/adaptive_simulation_results.csv
+2025-06-28 19:42:06,003 (simulate_adaptive_control:157) [INFO]: Generating simulation result plots...
+2025-06-28 19:42:06,802 (simulate_adaptive_control:183) [INFO]: Saved prediction plot: data/simulate_adaptive_control/adaptive_simulation/20250628T194204/prediction_vs_true_j5.png
+2025-06-28 19:42:07,113 (simulate_adaptive_control:217) [INFO]: Saved R^2 evolution plot: data/simulate_adaptive_control/adaptive_simulation/20250628T194204/r2_and_tau_evolution.png

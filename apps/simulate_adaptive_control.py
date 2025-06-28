@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import annotations
+from matplotlib.ticker import MaxNLocator
 
 import argparse
 import collections
@@ -189,7 +190,7 @@ def plot_simulation_results(results_df: pd.DataFrame, output_dir: Path, N_min: i
     # R^2スコアをプロット
     ax1.set_xlabel("Time [s]")
     ax1.set_ylabel("R^2 Score")
-    ax1.set_ylim(0.8, 1) 
+    ax1.set_ylim(0.85, 1) 
     for k_val in range(N_min, N_max + 1):
         # DataFrameにその列が存在するか確認してからプロット
         col_name = f"r2_tau_{k_val}"
@@ -207,6 +208,9 @@ def plot_simulation_results(results_df: pd.DataFrame, output_dir: Path, N_min: i
     ax2.plot(time_axis, results_df["selected_tau"], color='red', linestyle=':', marker='o', markersize=2, label="Selected τ")
     ax2.tick_params(axis='y', labelcolor='red')
     ax2.legend(loc='upper right')
+    
+
+    ax2.yaxis.set_major_locator(MaxNLocator(integer=True))
 
     fig.suptitle("R^2 Scores and Selected τ over Time")
     fig.tight_layout()

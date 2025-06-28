@@ -88,8 +88,11 @@ uv run python apps/train_model.py -v \
   -m apps/config/adaptive_model.toml \
   --label train_adaptive
 
+uv run python apps/calculate_score.py -v data/trained_model/test/latest/trained_model.joblib -d ../20241203T144115/step/sync/{slow,middle,fast} --test-size 0.1 --split-in-each-directory --seed 42  -e pdf
+
+
 シミュレーションの実行 
-uv run python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T165742/trained_model.joblib -r tests/data/motion_data_059.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+uv run python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T181101/trained_model.joblib -r ../20241203T144115/step/sync/fast/motion_data_059.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
 
 
 2025-06-28 18:11:02,794 (train_model:82) [INFO]: Training model...
