@@ -1,0 +1,17 @@
+2025-06-28 17:29:36,292 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 17:29:36,293 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 17:29:36,293 (event_logging:166) [DEBUG]: Log filename: data/simulate_adaptive_control/adaptive_simulation/20250628T172936/simulate_adaptive_control.log
+2025-06-28 17:29:36,293 (event_logging:168) [DEBUG]: Command: python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T165742/trained_model.joblib -r tests/data/motion_data_000.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+2025-06-28 17:29:36,294 (data_handling:162) [DEBUG]: Directory created: data/simulate_adaptive_control/adaptive_simulation/20250628T172936/config
+2025-06-28 17:29:36,303 (data_handling:180) [DEBUG]: Model config copied: None -> data/simulate_adaptive_control/adaptive_simulation/20250628T172936/config
+2025-06-28 17:29:36,303 (simulate_adaptive_control:205) [INFO]: Config: apps/config/adaptive_model.toml
+2025-06-28 17:29:36,303 (simulate_adaptive_control:206) [INFO]: Output directory: data/simulate_adaptive_control/adaptive_simulation/20250628T172936
+2025-06-28 17:29:36,303 (simulate_adaptive_control:207) [INFO]: N_min: 10, N_max: 10, Active Joints: [5]
+2025-06-28 17:29:36,332 (simulate_adaptive_control:109) [INFO]: AdaptiveController initialized. N_range=[10, 10], initial_tau=10
+2025-06-28 17:29:36,336 (simulate_adaptive_control:224) [INFO]: Starting simulation with new local search algorithm...
+2025-06-28 17:29:36,640 (simulate_adaptive_control:234) [INFO]: End of reference trajectory reached.
+2025-06-28 17:29:36,640 (simulate_adaptive_control:287) [INFO]: Simulation finished.
+2025-06-28 17:29:36,654 (simulate_adaptive_control:291) [INFO]: Simulation results saved to data/simulate_adaptive_control/adaptive_simulation/20250628T172936/adaptive_simulation_results.csv
+2025-06-28 17:29:36,654 (simulate_adaptive_control:154) [INFO]: Generating simulation result plots...
+2025-06-28 17:29:37,642 (simulate_adaptive_control:169) [INFO]: Saved prediction plot: data/simulate_adaptive_control/adaptive_simulation/20250628T172936/prediction_vs_true_j5.png
+2025-06-28 17:29:37,862 (simulate_adaptive_control:183) [INFO]: Saved R^2 evolution plot: data/simulate_adaptive_control/adaptive_simulation/20250628T172936/r2_and_tau_evolution.png

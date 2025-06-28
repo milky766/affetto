@@ -90,3 +90,28 @@ uv run python apps/train_model.py -v \
 
 シミュレーションの実行 
 uv run python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T165742/trained_model.joblib -r tests/data/motion_data_059.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+
+
+2025-06-28 18:11:02,794 (train_model:82) [INFO]: Training model...
+2025-06-28 18:12:12,147 (model_utility:754) [INFO]: Finding best initial tau from validation set...
+2025-06-28 18:12:12,286 (model_utility:773) [INFO]:   - R^2 score for tau=1: 0.9375
+2025-06-28 18:12:12,291 (model_utility:773) [INFO]:   - R^2 score for tau=2: 0.9437
+2025-06-28 18:12:12,292 (model_utility:773) [INFO]:   - R^2 score for tau=3: 0.9424
+2025-06-28 18:12:12,293 (model_utility:773) [INFO]:   - R^2 score for tau=4: 0.9443
+2025-06-28 18:12:12,295 (model_utility:773) [INFO]:   - R^2 score for tau=5: 0.9442
+2025-06-28 18:12:12,296 (model_utility:773) [INFO]:   - R^2 score for tau=6: 0.9430
+2025-06-28 18:12:12,297 (model_utility:773) [INFO]:   - R^2 score for tau=7: 0.9455
+2025-06-28 18:12:12,299 (model_utility:773) [INFO]:   - R^2 score for tau=8: 0.9447
+2025-06-28 18:12:12,300 (model_utility:773) [INFO]:   - R^2 score for tau=9: 0.9437
+2025-06-28 18:12:12,302 (model_utility:773) [INFO]:   - R^2 score for tau=10: 0.9457
+2025-06-28 18:12:12,303 (model_utility:773) [INFO]:   - R^2 score for tau=11: 0.9451
+2025-06-28 18:12:12,304 (model_utility:773) [INFO]:   - R^2 score for tau=12: 0.9441
+2025-06-28 18:12:12,305 (model_utility:773) [INFO]:   - R^2 score for tau=13: 0.9418
+2025-06-28 18:12:12,307 (model_utility:773) [INFO]:   - R^2 score for tau=14: 0.9162
+2025-06-28 18:12:12,310 (model_utility:773) [INFO]:   - R^2 score for tau=15: 0.8467
+2025-06-28 18:12:12,311 (model_utility:773) [INFO]:   - R^2 score for tau=16: 0.7570
+2025-06-28 18:12:12,313 (model_utility:773) [INFO]:   - R^2 score for tau=17: 0.6664
+2025-06-28 18:12:12,314 (model_utility:773) [INFO]:   - R^2 score for tau=18: 0.5800
+2025-06-28 18:12:12,315 (model_utility:773) [INFO]:   - R^2 score for tau=19: 0.4989
+2025-06-28 18:12:12,317 (model_utility:773) [INFO]:   - R^2 score for tau=20: 0.4254
+2025-06-28 18:12:12,320 (model_utility:777) [INFO]: Best initial tau found: 10 (score: 0.9457)

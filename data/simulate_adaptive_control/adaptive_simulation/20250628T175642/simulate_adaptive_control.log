@@ -1,0 +1,11 @@
+2025-06-28 17:56:42,667 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 17:56:42,667 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 17:56:42,667 (event_logging:166) [DEBUG]: Log filename: data/simulate_adaptive_control/adaptive_simulation/20250628T175642/simulate_adaptive_control.log
+2025-06-28 17:56:42,668 (event_logging:168) [DEBUG]: Command: python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T165742/trained_model.joblib -r tests/data/motion_data_000.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+2025-06-28 17:56:42,670 (data_handling:162) [DEBUG]: Directory created: data/simulate_adaptive_control/adaptive_simulation/20250628T175642/config
+2025-06-28 17:56:42,679 (data_handling:180) [DEBUG]: Model config copied: None -> data/simulate_adaptive_control/adaptive_simulation/20250628T175642/config
+2025-06-28 17:56:42,680 (simulate_adaptive_control:238) [INFO]: Config: apps/config/adaptive_model.toml
+2025-06-28 17:56:42,680 (simulate_adaptive_control:239) [INFO]: Output directory: data/simulate_adaptive_control/adaptive_simulation/20250628T175642
+2025-06-28 17:56:42,680 (simulate_adaptive_control:240) [INFO]: N_min: 7, N_max: 12, Active Joints: [5]
+2025-06-28 17:56:42,712 (simulate_adaptive_control:109) [INFO]: AdaptiveController initialized. N_range=[7, 12], initial_tau=7
+2025-06-28 17:56:42,718 (simulate_adaptive_control:257) [INFO]: Starting simulation with new local search algorithm...

@@ -19,8 +19,8 @@
   active_joints = [5]
   dt = 0.03333333333
   ctrl_step = 1
-  min_preview_step = 1 
-  max_preview_step = 20
+  min_preview_step = 10 # ★最小プレビュー長（下限）を追加
+  max_preview_step = 10 # 最大プレビュー長（上限）
 
 
   # --- ここまでは既存の設定と同じでOK ---

@@ -28,8 +28,12 @@ if TYPE_CHECKING:
     from affetto_nn_ctrl import CONTROLLER_T
     from affetto_nn_ctrl._typing import T, Unknown
 
+
+from sklearn.metrics import r2_score
+
 if sys.version_info >= (3, 11):
     from typing import NotRequired
+    
 
     import tomllib
 else:
@@ -706,6 +710,7 @@ def load_train_datasets(
 class TrainedModel(Generic[DataAdapterParamsType, StatesType, RefsType, InputsType]):
     model: Regressor | Pipeline
     adapter: DataAdapterBase[DataAdapterParamsType, StatesType, RefsType, InputsType]
+    initial_tau: int | None = None
 
     def get_params(self) -> dict:
         return self.model.get_params()
@@ -726,13 +731,53 @@ class TrainedModel(Generic[DataAdapterParamsType, StatesType, RefsType, InputsTy
 def train_model(
     model: Regressor | Pipeline,
     datasets: Data | Iterable[Data],
-    adapter: DataAdapterBase[DataAdapterParamsType, StatesType, RefsType, InputsType],
+    adapter: DataAdapterBase[...],
+    val_size: float = 0.25, # 検証データの割合を追加
+    seed: int | None = None,
 ) -> TrainedModel:
-    x_train, y_train = load_train_datasets(datasets, adapter)
+    # データセットを学習用と検証用に分割
+    from sklearn.model_selection import train_test_split
+    if isinstance(datasets, Data):
+        datasets = [datasets]
+    train_datasets, val_datasets = train_test_split(list(datasets), test_size=val_size, random_state=seed)
+
+    # 学習データでモデルを訓練
+    x_train, y_train = load_train_datasets(train_datasets, adapter)
     event_logger().debug("x_train.shape = %s", x_train.shape)
     event_logger().debug("y_train.shape = %s", y_train.shape)
     model = model.fit(x_train, y_train)
-    return TrainedModel(model, adapter)
+
+    # ★ ここからが追加ロジック ★
+    # 検証データで最適な初期tauを見つける
+    initial_tau = None
+    if val_datasets:
+        event_logger().info("Finding best initial tau from validation set...")
+        x_val, y_val = load_train_datasets(val_datasets, adapter)
+        y_pred = model.predict(x_val)
+        
+        best_score = -np.inf
+        
+        # モデルの出力（長いベクトル）と正解ラベルを各tauごとに分割して比較
+        N_min = adapter.params.min_preview_step
+        N_max = adapter.params.max_preview_step
+        n_ctrl_features = y_val.shape[1] // (N_max - N_min + 1)
+
+        for k in range(N_min, N_max + 1):
+            start_idx = (k - N_min) * n_ctrl_features
+            end_idx = start_idx + n_ctrl_features
+            
+            y_true_k = y_val[:, start_idx:end_idx]
+            y_pred_k = y_pred[:, start_idx:end_idx]
+            
+            score_k = r2_score(y_true_k, y_pred_k)
+            event_logger().info(f"  - R^2 score for tau={k}: {score_k:.4f}")
+            if score_k > best_score:
+                best_score = score_k
+                initial_tau = k
+        event_logger().info(f"Best initial tau found: {initial_tau} (score: {best_score:.4f})")
+
+    # 見つけたinitial_tauをモデルと一緒に保存
+    return TrainedModel(model, adapter, initial_tau=initial_tau)
 
 
 def dump_trained_model(trained_model: TrainedModel, output: str | Path) -> Path:

@@ -14,7 +14,7 @@ import pandas as pd
 import toml
 from pydantic import BaseModel
 
-from affetto_nn_ctrl.control_utility import _get_keys
+from affetto_nn_ctrl.control_utility import resolve_joints_str
 from affetto_nn_ctrl.data_handling import (
     copy_config,
     get_output_dir_path,
@@ -29,6 +29,7 @@ from affetto_nn_ctrl.model_utility import (
     DefaultStates,
     TrainedModel,
     load_trained_model,
+    _get_keys,
 )
 from affetto_nn_ctrl.simulation_utility import (
     calculate_sse_sst,
@@ -36,6 +37,7 @@ from affetto_nn_ctrl.simulation_utility import (
     load_reference_trajectory,
 )
 from pyplotutil.datautil import Data
+
 
 
 # ==========================================================
@@ -149,35 +151,69 @@ class AdaptiveController:
 
 # --- プロット用関数 ---
 def plot_simulation_results(results_df: pd.DataFrame, output_dir: Path, N_min: int, N_max: int, active_joints: list[int]):
+    """
+    シミュレーション結果のデータフレームから2種類のグラフを生成し、保存する。
+    """
     event_logger().info("Generating simulation result plots...")
     time_axis = results_df["time"]
+
+    # --- 1. 予測値 vs 真値 の比較プロット ---
     for joint_idx in active_joints:
         fig, axes = plt.subplots(2, 1, figsize=(18, 12), sharex=True)
         fig.suptitle(f"Prediction vs. True Values for Joint {joint_idx}")
-        # ca
+
+        # ca (上側のプロット)
         axes[0].plot(time_axis, results_df[f"true_ca_j{joint_idx}_at_tau"], ls="--", label="ca (true)")
         axes[0].plot(time_axis, results_df[f"predicted_ca_j{joint_idx}_at_tau"], label="ca (pred)")
-        axes[0].set_ylabel("Pressure ca [kPa]"), axes[0].legend(), axes[0].grid(True)
-        # cb
+        axes[0].set_ylabel("Pressure ca [kPa]")
+        axes[0].legend()
+        axes[0].grid(True)
+
+        # cb (下側のプロット)
         axes[1].plot(time_axis, results_df[f"true_cb_j{joint_idx}_at_tau"], ls="--", label="cb (true)")
         axes[1].plot(time_axis, results_df[f"predicted_cb_j{joint_idx}_at_tau"], label="cb (pred)")
-        axes[1].set_ylabel("Pressure cb [kPa]"), axes[1].set_xlabel("Time [s]"), axes[1].legend(), axes[1].grid(True)
+        axes[1].set_ylabel("Pressure cb [kPa]")
+        axes[1].set_xlabel("Time [s]")
+        axes[1].legend()
+        axes[1].grid(True)
+        
         plot_path = output_dir / f"prediction_vs_true_j{joint_idx}.png"
-        fig.savefig(plot_path), plt.close(fig)
+        fig.savefig(plot_path)
+        plt.close(fig)
         event_logger().info(f"Saved prediction plot: {plot_path}")
 
+
+    # --- 2. R^2スコアと選択されたτの推移プロット ---
     fig, ax1 = plt.subplots(figsize=(18, 6))
-    ax1.set_xlabel("Time [s]"), ax1.set_ylabel("R^2 Score")
+
+    # R^2スコアをプロット
+    ax1.set_xlabel("Time [s]")
+    ax1.set_ylabel("R^2 Score")
+    ax1.set_ylim(0.8, 1) 
     for k_val in range(N_min, N_max + 1):
-        ax1.plot(time_axis, results_df[f"r2_tau_{k_val}"], label=f"R^2 (τ={k_val})")
-    ax1.axhline(0, color='gray', ls='--', lw=1), ax1.tick_params(axis='y'), ax1.legend(loc='upper left'), ax1.grid(True)
+        # DataFrameにその列が存在するか確認してからプロット
+        col_name = f"r2_tau_{k_val}"
+        if col_name in results_df.columns:
+            ax1.plot(time_axis, results_df[col_name], label=f"R^2 (τ={k_val})")
+            
+    ax1.axhline(0, color='gray', linestyle='--', linewidth=1) # R^2=0 のライン
+    ax1.tick_params(axis='y')
+    ax1.legend(loc='upper left')
+    ax1.grid(True)
+
+    # 選択されたτを右側の軸にプロット
     ax2 = ax1.twinx()
     ax2.set_ylabel("Selected τ", color='red')
-    ax2.plot(time_axis, results_df["selected_tau"], color='red', ls=':', marker='o', markersize=2, label="Selected τ")
-    ax2.tick_params(axis='y', labelcolor='red'), ax2.legend(loc='upper right')
-    fig.suptitle("R^2 Scores and Selected τ over Time"), fig.tight_layout()
+    ax2.plot(time_axis, results_df["selected_tau"], color='red', linestyle=':', marker='o', markersize=2, label="Selected τ")
+    ax2.tick_params(axis='y', labelcolor='red')
+    ax2.legend(loc='upper right')
+
+    fig.suptitle("R^2 Scores and Selected τ over Time")
+    fig.tight_layout()
+    
     plot_path = output_dir / "r2_and_tau_evolution.png"
-    fig.savefig(plot_path), plt.close(fig)
+    fig.savefig(plot_path)
+    plt.close(fig)
     event_logger().info(f"Saved R^2 evolution plot: {plot_path}")
 
 
@@ -194,6 +230,8 @@ def run(args: argparse.Namespace) -> None:
     output_dir = get_output_dir_path(
         base_dir="data", app_name=Path(__file__).stem, given_output=args.output,
         label=args.label, split_by_date=True,
+        sublabel=None,          # ★ この引数を追加
+        specified_date=None,  # ★ この引数を追加
     )
     prepare_data_dir_path(output_dir, make_latest_symlink=True)
     start_logging(sys.argv, output_dir, __name__, args.verbose)
@@ -206,6 +244,15 @@ def run(args: argparse.Namespace) -> None:
     trained_model = load_trained_model(args.model_path)
     reference_df = load_reference_trajectory(args.reference_trajectory)
     total_ref_len = len(reference_df)
+    
+        # ==========================================================
+    # ▼▼▼ デバッグ用ログ(1): 変数の初期値を確認 ▼▼▼
+    # ==========================================================
+    event_logger().info("--- DEBUG INFO ---")
+    event_logger().info(f"args.max_steps is set to: {args.max_steps}")
+    event_logger().info(f"Length of reference_df (total_ref_len) is: {total_ref_len}")
+    event_logger().info(f"--------------------")
+
 
     # --- Controllerの初期化 ---
     controller = AdaptiveController(
@@ -226,6 +273,21 @@ def run(args: argparse.Namespace) -> None:
     n_ctrl_features = len(ctrl_keys)
 
     for step in range(args.max_steps):
+        # ==========================================================
+        # ▼▼▼ デバッグ用ログ(2): ループの進捗を確認 ▼▼▼
+        # ==========================================================
+        if step % 100 == 0:
+            event_logger().info(f"Processing step: {step} / {args.max_steps}")
+            
+            # ==========================================================
+        # ▼▼▼ デバッグ用ログ(3): ループ停止条件の確認 ▼▼▼
+        # ==========================================================
+        if step + N_max >= total_ref_len:
+            event_logger().info(f"!!! Break condition met at step {step}:")
+            event_logger().info(f"!!! step({step}) + N_max({N_max}) >= total_ref_len({total_ref_len})")
+            event_logger().info("!!! Loop will now break.")
+            break
+        
         if step + N_max >= total_ref_len:
             event_logger().info("End of reference trajectory reached.")
             break
@@ -264,8 +326,14 @@ def run(args: argparse.Namespace) -> None:
         
         # 6. 結果の記録
         result_entry = {"time": step * (1.0/30.0), "selected_tau": selected_tau}
-        for k_val in range(N_min, N_max + 1):
-            result_entry[f"r2_tau_{k_val}"] = controller.calculate_r_squared(k_val)
+        tau_minus_1 = selected_tau - 1
+        tau_plus_1 = selected_tau + 1
+        result_entry[f"r2_tau_{tau_minus_1}"] = controller.calculate_r_squared(tau_minus_1)
+        result_entry[f"r2_tau_{selected_tau}"] = controller.calculate_r_squared(selected_tau)
+        result_entry[f"r2_tau_{tau_plus_1}"] = controller.calculate_r_squared(tau_plus_1)
+                # ... (予測値と真値の記録ロジック) ...
+        sim_results.append(result_entry)
+
         
         final_true_ref_idx = min(step + selected_tau, total_ref_len - 1)
         true_command = reference_df.iloc[final_true_ref_idx][ctrl_keys].values
