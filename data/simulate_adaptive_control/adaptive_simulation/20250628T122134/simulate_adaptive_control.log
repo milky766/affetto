@@ -1,0 +1,10 @@
+2025-06-28 12:21:34,980 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 12:21:34,981 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 12:21:34,981 (event_logging:166) [DEBUG]: Log filename: data/simulate_adaptive_control/adaptive_simulation/20250628T122134/simulate_adaptive_control.log
+2025-06-28 12:21:34,981 (event_logging:168) [DEBUG]: Command: python apps/simulate_adaptive_control.py /path/to/your/NEWLY_TRAINED_MODEL.joblib -r tests/data/motion_data_000.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+2025-06-28 12:21:34,983 (data_handling:162) [DEBUG]: Directory created: data/simulate_adaptive_control/adaptive_simulation/20250628T122134/config
+2025-06-28 12:21:34,993 (data_handling:180) [DEBUG]: Model config copied: None -> data/simulate_adaptive_control/adaptive_simulation/20250628T122134/config
+2025-06-28 12:21:34,993 (simulate_adaptive_control:202) [INFO]: config: apps/config/adaptive_model.toml
+2025-06-28 12:21:34,993 (simulate_adaptive_control:203) [INFO]: output: data/simulate_adaptive_control/adaptive_simulation/20250628T122134
+2025-06-28 12:21:34,993 (simulate_adaptive_control:204) [INFO]: N_max: 2, Active Joints: [5]
+2025-06-28 12:21:34,993 (simulate_adaptive_control:208) [INFO]: Loading trained model from /path/to/your/NEWLY_TRAINED_MODEL.joblib

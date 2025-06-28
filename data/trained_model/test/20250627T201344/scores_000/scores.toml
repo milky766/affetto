@@ -1,0 +1,154 @@
+[model.performance]
+model_path = "data/trained_model/test/latest/trained_model.joblib"
+score = { mean = 0.7649527160751148, std = 0.06627816217192616, argmax = 21, argmin = 4 }
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_059.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_000"
+score = 0.7018990068310278
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_021.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_001"
+score = 0.7302501854828378
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_056.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_002"
+score = 0.7027957120131592
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_018.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_003"
+score = 0.6853864174881693
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_033.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_004"
+score = 0.6323251222637416
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_042.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_005"
+score = 0.6739245401032381
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_050.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_006"
+score = 0.6979536404773924
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_027.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_007"
+score = 0.6367842773645126
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_092.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_008"
+score = 0.6912532755763237
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/slow/motion_data_071.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_009"
+score = 0.6623162253147923
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_034.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_010"
+score = 0.8007994797695168
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_026.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_011"
+score = 0.7636343525236079
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_042.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_012"
+score = 0.7918501799905687
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_046.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_013"
+score = 0.7862299624913701
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_038.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_014"
+score = 0.766082068229862
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_007.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_015"
+score = 0.7836209328677062
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_079.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_016"
+score = 0.7885400438476509
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_045.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_017"
+score = 0.7452402657293786
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_040.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_018"
+score = 0.7859373134118466
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/middle/motion_data_056.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_019"
+score = 0.7789508401676132
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_074.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_020"
+score = 0.8222077760300147
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_069.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_021"
+score = 0.8509053892661399
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_061.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_022"
+score = 0.8446245293650244
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_091.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_023"
+score = 0.8158594592087519
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_090.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_024"
+score = 0.8282709204535875
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_026.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_025"
+score = 0.8474914301647649
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_079.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_026"
+score = 0.8340122505763848
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_088.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_027"
+score = 0.8329604554674871
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_019.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_028"
+score = 0.8406740526820276
+
+[[model.performance.scores]]
+test_dataset = "../20241203T144115/step/sync/fast/motion_data_086.csv"
+plot_path = "data/trained_model/test/latest/scores_000/plots_029"
+score = 0.8258013770949487
+

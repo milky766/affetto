@@ -1,0 +1,15 @@
+2025-06-27 23:48:32,969 (event_logging:164) [DEBUG]: Start event logging
+2025-06-27 23:48:32,969 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-27 23:48:32,970 (event_logging:166) [DEBUG]: Log filename: data/simulate_adaptive_control/adaptive_simulation/20250627T234832/simulate_adaptive_control.log
+2025-06-27 23:48:32,970 (event_logging:168) [DEBUG]: Command: python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250627T232116/trained_model.joblib -r tests/data/motion_data_000.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000
+2025-06-27 23:48:32,971 (data_handling:162) [DEBUG]: Directory created: data/simulate_adaptive_control/adaptive_simulation/20250627T234832/config
+2025-06-27 23:48:32,982 (data_handling:180) [DEBUG]: Model config copied: None -> data/simulate_adaptive_control/adaptive_simulation/20250627T234832/config
+2025-06-27 23:48:32,982 (simulate_adaptive_control:215) [INFO]: config: apps/config/adaptive_model.toml
+2025-06-27 23:48:32,982 (simulate_adaptive_control:216) [INFO]: output: data/simulate_adaptive_control/adaptive_simulation/20250627T234832
+2025-06-27 23:48:32,982 (simulate_adaptive_control:217) [INFO]: N_max: 1, Active Joints: [2, 3, 4, 5]
+2025-06-27 23:48:32,983 (simulate_adaptive_control:221) [INFO]: Loading trained model from data/trained_model/train_adaptive/20250627T232116/trained_model.joblib
+2025-06-27 23:48:32,993 (simulate_adaptive_control:225) [INFO]: Loading reference trajectory from tests/data/motion_data_000.csv
+2025-06-27 23:48:33,025 (simulate_adaptive_control:228) [INFO]: Reference trajectory loaded with 301 steps.
+2025-06-27 23:48:33,026 (simulate_adaptive_control:61) [INFO]: AdaptiveController initialized with N_max=1, initial_tau=1
+2025-06-27 23:48:33,030 (simulate_adaptive_control:247) [INFO]: Starting simulation...
+2025-06-27 23:48:33,032 (simulate_adaptive_control:108) [DEBUG]: No sufficient R^2 data for any tau. Maintaining current tau: 1

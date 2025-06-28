@@ -1,0 +1,30 @@
+吉田くん
+
+大阪大学の熱田です。
+
+遅くなってすみません。Affettoで実験した際のソースコードを下記からダウンロードできるようにしました。
+--
+https://www.dropbox.com/scl/fi/p7tt55e8w2nt4bzgagae0/affetto-nn-ctrl-7090826.tar.gz?rlkey=f51ynuhde2ciyqhvvxgftlrzd&st=3y9cktmw&dl=0
+
+使い方はREADME.mdを参考になさってください。ただしAffettoがない環境では基本的に実行できません。
+せめて、"Model Training"と"Prediction Evaluation"を実行できるように、実際のAffettoで収集したデータセット（"Data Collection"で得られたデータセット）を下記からダウンロードできるようにしました。
+--
+https://www.dropbox.com/scl/fi/4u6f8wol2mffrax7x8aam/20241203T144115.tgz?rlkey=pxqr7vvl8wgmr7mxbh2cmx6v2&st=zzuo131e&dl=0
+
+上記の20241203T144115.tgzを例えば/home/user/Downloadというディレクトリにダウンロードしたとして、
+--
+cd /home/user/Download
+tar xvfz 20241203T144115.tgz
+tar xvfz affetto-nn-ctrl-7090826.tar.gz
+cd affetto-nn-ctrl-7090826
+uv run python apps/train_model.py -v ../20241203T144115/step/sync/fast -j 5 --train-size 0.25 --seed 42 -m apps/config/model.toml -a preview-ref -s std -r mlp --label test
+uv run python apps/calculate_score.py -v data/trained_model/test/latest/trained_model.joblib -d ../20241203T144115/step/sync/{slow,middle,fast} --test-size 0.1 --split-in-each-directory --seed 42  -e pdf
+
+と実行するとdata/trained_model/test/latest/scores_000に計算したR2スコアと予測値の時系列プロットが出力されます。訓練モデルのパラメータはmodel.tomlで変更できます。
+Linux環境以外で実行できるかは不明です。
+
+
+> また、その前段階に遅れ埋め込みモデルをシミュレーションされていた場合は、そのコードもご提供いただけるとありがたいです。
+>
+何のことを指しているか理解できていないのですが、遅れ埋め込みモデルのパフォーマンスはシミュレーションではなく、上記の"Prediction Evaluation"によって評価しました。
+具体的には、モデルの訓練に使っていないモーションデータを使って、入力時系列を訓練したモデルに与えることで得られた出力値（今回は圧力指令値）と、そのモーションデータの実際の圧力指令値（真値）に対してR2スコアを計算して、色んなハイパーパラメータに対するパフォーマンスを評価しています。

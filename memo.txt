@@ -1,0 +1,92 @@
+__init__.pyはそのフォルダをpythonパッケージとして認識させるためのファイル
+py.typedはpythonパッケージが型ヒントを含んでいることを示すためのマーカーファイル.パッケージを配布するときに同梱
+
+この tests/test_data_handling.py は、あなたのプロジェクト affetto-nn-ctrl 内の data_handling.py モジュールにある関数が正しく動作するかを自動的に検証するテストスクリプトです。]
+
+例えば.addという関数の動作を確認したい場合は,test_add関数をtest_calc.py内に作り,assertで期待する動作を書く
+
+# test_calc.py
+def add(x, y):
+    return x + y
+
+def test_add():
+    assert add(2, 3) == 5  # ✅ 成功
+    assert add(-1, 1) == 0  # ✅ 成功
+    assert add(0, 0) == 0   # ✅ 成功
+
+下の順で実行
+collect_data.py
+train_model.py (model.tomlに使用するモデルの情報が書いてある.予測そのものの精度評価R^2） 
+calculate_score.py (save score in scores.toml)
+record_trajectory.py (kinestic teaching)
+track_trajectory.py (replaying)
+calculate_rmse.py （実際の追従時の誤差評価 RMSE）
+
+--------------------------------------------------------------------------------------------------------
+collect_data.py
+--------------------------------------------------------------------------------------------------------
+主に3つのフェーズで動作
+1.引数のパース parse()
+プログラムを実行するときに一緒に渡されたコマンドライン引数（オプションやパラメータ）を読み取り,プログラム内で使いやすい形（変数など）に変換
+具体的には
+python collect_data.py --duration 20 --joints 1 2 3
+のように指定した --duration, --joints といった文字列のこと。
+args.durationなどに格納される
+実行時に毎回コードを書き換えずに動作を簡単に切り替えられる
+2.ディレクトリ準備とロギング設定 main()
+出力ディレクトリ準備
+copy_config で指定した TOML を出力フォルダにコピー。
+ログ初期化 start_logging と event_logger() でデバッグ／実行ログをファイルに残す
+
+3.データ収集の実行本体 run()
+3-1. コントローラと初期化
+create_controller(config, sfreq, cfreq) で通信ソケット (comm),コントローラオブジェクト (ctrl),状態取得オブジェクト (state)
+
+3-2.ランダム軌道生成器の構築
+rt = RandomTrajectory(
+    active_joints, t0, q0,
+    t_range, q_range, q_limit,
+    profile, seed,
+    async_update=async_mode
+)
+t_range 秒ごとに,q_range（角度％）の範囲で,滑らかに（またはステップ的に）変化する,目標角度 & 角速度関数を生成
+
+3-3.メインループ:データ記録
+3-4.後処理
+全関節の空気圧を開放し,ソケットを閉じ,スレッドなどをクリーンアップ
+
+=========================================================================================================
+以下詳細な説明
+=========================================================================================================
+
+
+pythonがC++より遅い理由
+
+Python
+インタープリタ実行（各行ごとに読む→解析→動かす）＋動的型付け（定義時に型を指定していない）のオーバーヘッド（余分な時間資源）で遅くなる
+書きやすさ、豊富なライブラリ、柔軟性が強み
+特にループなどで毎回解析,型チェック,名前解決を行うため遅くなる
+インタープレタさえあればプラットフォーム（windows,linuxなど）に依存せず実行できる
+インタプリタ型なので対話型で一行ずつ実行できる
+ちょっと書き換えて即実行もできるのでデバッグやプロトタイピングが早い
+
+C++
+コンパイル時に最適化（コンパイル段階で中間コード・機械語に変換されているため,実行時にほぼネイティブな命令だけで実行）＋静的型付けで高速実行
+性能クリティカルな部分や大規模システム向き
+pythonだったらライブラリ呼び出しの1行で解決することも,C++なら複数行使わなきゃいけない
+C++コンパイラはソースコードwoCPU（x84_64やARM）の機械命令に変換してバイナリを生成するため,異なるアーキテクチャのマシンでは命令セットが異なり,同じファイルでは実行できない
+コンテナ・仮想環境を利用して,dockerイメージ内で同一環境を再現し,そのまま動作させれば環境差を吸収できる
+
+コンテナ：軽量な仮想化技術で、Docker や Podman などが代表例です。ホスト OS 上に「独立したユーザー空間」を作り、必要なライブラリや設定だけをまとめたイメージ（Docker イメージ）を動かします。
+仮想環境（VM）：VirtualBox や VMware、KVM などでフル仮想化したゲスト OS を起動し、その中にすべての開発ツールやライブラリをインストールします。
+
+adaptive_simulationのやり方
+適応モデルのトレーニング
+uv run python apps/train_model.py -v \
+  ../20241203T144115/step/sync/fast \
+  -j 5 --train-size 0.25 --seed 42 \
+  -m apps/config/adaptive_model.toml \
+  --label train_adaptive
+
+シミュレーションの実行 
+uv run python apps/simulate_adaptive_control.py data/trained_model/train_adaptive/20250628T165742/trained_model.joblib -r tests/data/motion_data_059.csv -c apps/config/adaptive_model.toml --active-joints 5 --max-steps 1000

@@ -1,0 +1,135 @@
+################################################################################
+# モデル設定メモ
+#
+# ・モデル：多層パーセプトロン（MLP）
+#
+# ・Adapter（入力アダプタ）：preview-ref
+#    - パラメータセット：default
+#    - アクティブ関節： [2, 3, 4, 5]
+#    - 時間刻み（dt）：0.03333333333（30Hz）
+#    - 制御ステップ（ctrl_step）：1
+#    - プレビュー・ステップ（preview_step）：
+#        • default → 5
+#        • testing → 10
+#
+# ・Scaler（特徴量スケーリング）：std（StandardScaler）
+#    - with_mean = true
+#    - with_std  = true
+#
+# ・Regressor（回帰モデル）：mlp（MLPRegressor）
+#    - 隠れ層サイズ（hidden_layer_sizes）：[100]
+#    - 活性化関数（activation）：relu
+#    - ソルバー（solver）：adam
+#    - 学習率初期値（learning_rate_init）：0.001
+#    - 最大イテレーション数（max_iter）：200
+#    - モーメンタム（momentum）：0.9
+#    - 早期停止（early_stopping）：false
+
+pedictorはこのtomlデータをもとに構成される
+adapter（生データ（CSV などの時系列）をモデルが扱える形（特徴量行列）に変換）・scaler（各特徴量を平均 0・標準偏差 1 に正規化）・regressor（規化された特徴量から出力（バルブ圧力など）を予測）
+から構成される
+################################################################################
+
+
+[model] #Multi-Layer Perceptron
+
+[model.adapter]
+name = "preview-ref"
+params = "default"
+active_joints = [2, 3, 4, 5]
+dt = 0.03333333333 #30Hz
+include_dqdes = false  #微分値は使わない
+
+[model.adapter.preview-ref.testing]
+ctrl_step = 1
+preview_step = 10
+
+[model.adapter.preview-ref.default]
+ctrl_step = 1
+preview_step = 5
+
+[model.adapter.delay-states.default]
+ctrl_step = 1
+delay_step = 5
+
+[model.adapter.delay-states-all.default]
+ctrl_step = 1
+delay_step = 5
+
+[model.scaler]
+name = "std"
+params = "default"
+
+[model.scaler.std.default]
+[model.scaler.minmax.default]
+[model.scaler.maxabs.default]
+[model.scaler.robust.default]
+
+[model.scaler.std.option-list]
+with_mean = true
+with_std = true
+
+[model.scaler.minmax.option-list]
+feature_range = [0, 1]
+clip = false
+
+[model.scaler.maxabs.option-list]
+[model.scaler.robust.option-list]
+with_centering = true
+with_scaling = true
+quantile_range = [25.0, 75.0]
+unit_variance = false
+
+[model.regressor]
+name = "mlp" #scikit-learnのMLPRegressor（多層パーセプトロン回帰器）を使用
+params = "default"
+
+[model.regressor.linear.default]
+[model.regressor.ridge.default]
+[model.regressor.mlp.default]
+
+[model.regressor.linear.option-list]
+fit_intercept = true
+copy_X = true
+n_jobs = "None"
+positive = false
+
+[model.regressor.ridge.option-list]
+alpha = 1.0
+fit_intercept = true
+copy_X = true
+max_iter = "None"
+tol = 1e-4
+solver = "auto"
+positive = false
+random_state = "None"
+
+[model.regressor.mlp.option-list]
+hidden_layer_sizes = [100]
+activation = "relu"
+solver = "adam"
+alpha = 0.0001
+batch_size = "auto"
+learning_rate = "constant"
+learning_rate_init = 0.001
+power_t = 0.5
+max_iter = 200
+shuffle = true
+random_state = "None"
+tol = 1e-4
+verbose = false
+warm_start = false
+momentum = 0.9
+nesterovs_momentum = true
+early_stopping = false
+validation_fraction = 0.1
+beta_1 = 0.9
+beta_2 = 0.999
+epsilon = 1e-8
+n_iter_no_change = 10
+
+
+# Local Variables:
+# jinx-local-words: "adam cholesky ctrl dqdes dt init invscaling iter lbfgs lsqr maxabs minmax mlp nesterovs params preprocessing quantile regressor relu scaler sgd svd tanh tol"
+# fill-column: 120
+# End:

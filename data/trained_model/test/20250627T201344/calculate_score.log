@@ -1,0 +1,197 @@
+2025-06-27 20:21:03,397 (event_logging:164) [DEBUG]: Start event logging
+2025-06-27 20:21:03,397 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-27 20:21:03,397 (event_logging:166) [DEBUG]: Log filename: data/trained_model/test/latest/calculate_score.log
+2025-06-27 20:21:03,398 (event_logging:168) [DEBUG]: Command: python apps/calculate_score.py -v data/trained_model/test/latest/trained_model.joblib -d ../20241203T144115/step/sync/slow ../20241203T144115/step/sync/middle ../20241203T144115/step/sync/fast --test-size 0.1 --split-in-each-directory --seed 42 -e pdf
+2025-06-27 20:21:03,398 (calculate_score:364) [INFO]: Output directory: data/trained_model/test/latest
+2025-06-27 20:21:03,400 (data_handling:162) [DEBUG]: Directory created: data/trained_model/test/latest
+2025-06-27 20:21:03,400 (calculate_score:366) [DEBUG]: Parsed arguments: Namespace(model='data/trained_model/test/latest/trained_model.joblib', datasets=['../20241203T144115/step/sync/slow', '../20241203T144115/step/sync/middle', '../20241203T144115/step/sync/fast'], glob_pattern='**/*.csv', train_size=None, test_size=0.1, seed=42, shuffle=True, split_in_each_directory=True, output=None, output_prefix='scores', overwrite=False, plot_output_prefix='plots', plot_prefix='prediction', plot_ext=['pdf'], merge_plots=True, dpi='figure', show_legend=True, show_screen=None, verbose=1)
+2025-06-27 20:21:03,407 (calculate_score:158) [INFO]: Trained model is loaded: data/trained_model/test/latest/trained_model.joblib
+2025-06-27 20:21:03,407 (calculate_score:161) [DEBUG]: Loading datasets with following condition:
+2025-06-27 20:21:03,408 (calculate_score:162) [DEBUG]:      Path list: ['../20241203T144115/step/sync/slow', '../20241203T144115/step/sync/middle', '../20241203T144115/step/sync/fast']
+2025-06-27 20:21:03,408 (calculate_score:163) [DEBUG]:   glob pattern: **/*.csv
+2025-06-27 20:21:03,476 (model_utility:600) [DEBUG]: Loading datasets from ['../20241203T144115/step/sync/slow/motion_data_059.csv', '../20241203T144115/step/sync/slow/motion_data_021.csv', '../20241203T144115/step/sync/slow/motion_data_056.csv', '../20241203T144115/step/sync/slow/motion_data_018.csv', '../20241203T144115/step/sync/slow/motion_data_033.csv', '../20241203T144115/step/sync/slow/motion_data_042.csv', '../20241203T144115/step/sync/slow/motion_data_050.csv', '../20241203T144115/step/sync/slow/motion_data_027.csv', '../20241203T144115/step/sync/slow/motion_data_092.csv', '../20241203T144115/step/sync/slow/motion_data_071.csv', '../20241203T144115/step/sync/middle/motion_data_034.csv', '../20241203T144115/step/sync/middle/motion_data_026.csv', '../20241203T144115/step/sync/middle/motion_data_042.csv', '../20241203T144115/step/sync/middle/motion_data_046.csv', '../20241203T144115/step/sync/middle/motion_data_038.csv', '../20241203T144115/step/sync/middle/motion_data_007.csv', '../20241203T144115/step/sync/middle/motion_data_079.csv', '../20241203T144115/step/sync/middle/motion_data_045.csv', '../20241203T144115/step/sync/middle/motion_data_040.csv', '../20241203T144115/step/sync/middle/motion_data_056.csv', '../20241203T144115/step/sync/fast/motion_data_074.csv', '../20241203T144115/step/sync/fast/motion_data_069.csv', '../20241203T144115/step/sync/fast/motion_data_061.csv', '../20241203T144115/step/sync/fast/motion_data_091.csv', '../20241203T144115/step/sync/fast/motion_data_090.csv', '../20241203T144115/step/sync/fast/motion_data_026.csv', '../20241203T144115/step/sync/fast/motion_data_079.csv', '../20241203T144115/step/sync/fast/motion_data_088.csv', '../20241203T144115/step/sync/fast/motion_data_019.csv', '../20241203T144115/step/sync/fast/motion_data_086.csv']
+2025-06-27 20:21:05,514 (model_utility:604) [INFO]: 30 datasets loaded in total
+2025-06-27 20:21:05,517 (calculate_score:181) [DEBUG]: Calculated scores data counter initialized with 0
+2025-06-27 20:21:05,518 (calculate_score:189) [DEBUG]: Performance plots counter initialized with 0
+2025-06-27 20:21:05,524 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_059.csv
+2025-06-27 20:21:05,530 (calculate_score:203) [INFO]: [1/30] Calculated score: 0.7018990068310278
+2025-06-27 20:21:06,212 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:06,212 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_000/prediction_05
+2025-06-27 20:21:06,212 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_000/prediction_05
+2025-06-27 20:21:08,972 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_000/pdf/prediction_05.pdf
+2025-06-27 20:21:08,976 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_021.csv
+2025-06-27 20:21:08,979 (calculate_score:203) [INFO]: [2/30] Calculated score: 0.7302501854828378
+2025-06-27 20:21:09,014 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:09,015 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_001/prediction_05
+2025-06-27 20:21:09,015 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_001/prediction_05
+2025-06-27 20:21:09,518 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_001/pdf/prediction_05.pdf
+2025-06-27 20:21:09,520 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_056.csv
+2025-06-27 20:21:09,522 (calculate_score:203) [INFO]: [3/30] Calculated score: 0.7027957120131592
+2025-06-27 20:21:09,556 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:09,557 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_002/prediction_05
+2025-06-27 20:21:09,557 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_002/prediction_05
+2025-06-27 20:21:10,111 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_002/pdf/prediction_05.pdf
+2025-06-27 20:21:10,113 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_018.csv
+2025-06-27 20:21:10,116 (calculate_score:203) [INFO]: [4/30] Calculated score: 0.6853864174881693
+2025-06-27 20:21:10,157 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:10,158 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_003/prediction_05
+2025-06-27 20:21:10,158 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_003/prediction_05
+2025-06-27 20:21:10,700 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_003/pdf/prediction_05.pdf
+2025-06-27 20:21:10,702 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_033.csv
+2025-06-27 20:21:10,705 (calculate_score:203) [INFO]: [5/30] Calculated score: 0.6323251222637416
+2025-06-27 20:21:10,743 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:10,743 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_004/prediction_05
+2025-06-27 20:21:10,743 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_004/prediction_05
+2025-06-27 20:21:11,283 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_004/pdf/prediction_05.pdf
+2025-06-27 20:21:11,285 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_042.csv
+2025-06-27 20:21:11,288 (calculate_score:203) [INFO]: [6/30] Calculated score: 0.6739245401032381
+2025-06-27 20:21:11,324 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:11,324 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_005/prediction_05
+2025-06-27 20:21:11,324 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_005/prediction_05
+2025-06-27 20:21:11,846 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_005/pdf/prediction_05.pdf
+2025-06-27 20:21:11,849 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_050.csv
+2025-06-27 20:21:11,852 (calculate_score:203) [INFO]: [7/30] Calculated score: 0.6979536404773924
+2025-06-27 20:21:11,890 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:11,890 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_006/prediction_05
+2025-06-27 20:21:11,891 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_006/prediction_05
+2025-06-27 20:21:12,389 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_006/pdf/prediction_05.pdf
+2025-06-27 20:21:12,392 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_027.csv
+2025-06-27 20:21:12,394 (calculate_score:203) [INFO]: [8/30] Calculated score: 0.6367842773645126
+2025-06-27 20:21:12,430 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:12,430 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_007/prediction_05
+2025-06-27 20:21:12,430 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_007/prediction_05
+2025-06-27 20:21:12,957 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_007/pdf/prediction_05.pdf
+2025-06-27 20:21:12,959 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_092.csv
+2025-06-27 20:21:12,962 (calculate_score:203) [INFO]: [9/30] Calculated score: 0.6912532755763237
+2025-06-27 20:21:12,998 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:12,998 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_008/prediction_05
+2025-06-27 20:21:12,998 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_008/prediction_05
+2025-06-27 20:21:13,515 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_008/pdf/prediction_05.pdf
+2025-06-27 20:21:13,517 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/slow/motion_data_071.csv
+2025-06-27 20:21:13,520 (calculate_score:203) [INFO]: [10/30] Calculated score: 0.6623162253147923
+2025-06-27 20:21:13,558 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:13,558 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_009/prediction_05
+2025-06-27 20:21:13,558 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_009/prediction_05
+2025-06-27 20:21:14,048 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_009/pdf/prediction_05.pdf
+2025-06-27 20:21:14,050 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_034.csv
+2025-06-27 20:21:14,053 (calculate_score:203) [INFO]: [11/30] Calculated score: 0.8007994797695168
+2025-06-27 20:21:14,089 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:14,089 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_010/prediction_05
+2025-06-27 20:21:14,089 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_010/prediction_05
+2025-06-27 20:21:14,655 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_010/pdf/prediction_05.pdf
+2025-06-27 20:21:14,657 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_026.csv
+2025-06-27 20:21:14,660 (calculate_score:203) [INFO]: [12/30] Calculated score: 0.7636343525236079
+2025-06-27 20:21:14,698 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:14,698 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_011/prediction_05
+2025-06-27 20:21:14,698 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_011/prediction_05
+2025-06-27 20:21:15,272 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_011/pdf/prediction_05.pdf
+2025-06-27 20:21:15,274 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_042.csv
+2025-06-27 20:21:15,277 (calculate_score:203) [INFO]: [13/30] Calculated score: 0.7918501799905687
+2025-06-27 20:21:15,315 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:15,315 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_012/prediction_05
+2025-06-27 20:21:15,315 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_012/prediction_05
+2025-06-27 20:21:15,849 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_012/pdf/prediction_05.pdf
+2025-06-27 20:21:15,852 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_046.csv
+2025-06-27 20:21:15,856 (calculate_score:203) [INFO]: [14/30] Calculated score: 0.7862299624913701
+2025-06-27 20:21:15,895 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:15,896 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_013/prediction_05
+2025-06-27 20:21:15,896 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_013/prediction_05
+2025-06-27 20:21:16,422 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_013/pdf/prediction_05.pdf
+2025-06-27 20:21:16,426 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_038.csv
+2025-06-27 20:21:16,433 (calculate_score:203) [INFO]: [15/30] Calculated score: 0.766082068229862
+2025-06-27 20:21:16,509 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:16,510 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_014/prediction_05
+2025-06-27 20:21:16,510 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_014/prediction_05
+2025-06-27 20:21:17,034 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_014/pdf/prediction_05.pdf
+2025-06-27 20:21:17,036 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_007.csv
+2025-06-27 20:21:17,039 (calculate_score:203) [INFO]: [16/30] Calculated score: 0.7836209328677062
+2025-06-27 20:21:17,153 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:17,153 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_015/prediction_05
+2025-06-27 20:21:17,153 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_015/prediction_05
+2025-06-27 20:21:17,681 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_015/pdf/prediction_05.pdf
+2025-06-27 20:21:17,683 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_079.csv
+2025-06-27 20:21:17,685 (calculate_score:203) [INFO]: [17/30] Calculated score: 0.7885400438476509
+2025-06-27 20:21:17,722 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:17,722 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_016/prediction_05
+2025-06-27 20:21:17,722 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_016/prediction_05
+2025-06-27 20:21:18,276 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_016/pdf/prediction_05.pdf
+2025-06-27 20:21:18,278 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_045.csv
+2025-06-27 20:21:18,281 (calculate_score:203) [INFO]: [18/30] Calculated score: 0.7452402657293786
+2025-06-27 20:21:18,318 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:18,318 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_017/prediction_05
+2025-06-27 20:21:18,319 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_017/prediction_05
+2025-06-27 20:21:18,836 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_017/pdf/prediction_05.pdf
+2025-06-27 20:21:18,838 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_040.csv
+2025-06-27 20:21:18,841 (calculate_score:203) [INFO]: [19/30] Calculated score: 0.7859373134118466
+2025-06-27 20:21:18,879 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:18,879 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_018/prediction_05
+2025-06-27 20:21:18,880 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_018/prediction_05
+2025-06-27 20:21:19,398 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_018/pdf/prediction_05.pdf
+2025-06-27 20:21:19,400 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/middle/motion_data_056.csv
+2025-06-27 20:21:19,403 (calculate_score:203) [INFO]: [20/30] Calculated score: 0.7789508401676132
+2025-06-27 20:21:19,440 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:19,441 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_019/prediction_05
+2025-06-27 20:21:19,441 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_019/prediction_05
+2025-06-27 20:21:19,978 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_019/pdf/prediction_05.pdf
+2025-06-27 20:21:19,980 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_074.csv
+2025-06-27 20:21:19,983 (calculate_score:203) [INFO]: [21/30] Calculated score: 0.8222077760300147
+2025-06-27 20:21:20,019 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:20,019 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_020/prediction_05
+2025-06-27 20:21:20,019 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_020/prediction_05
+2025-06-27 20:21:20,576 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_020/pdf/prediction_05.pdf
+2025-06-27 20:21:20,578 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_069.csv
+2025-06-27 20:21:20,581 (calculate_score:203) [INFO]: [22/30] Calculated score: 0.8509053892661399
+2025-06-27 20:21:20,619 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:20,619 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_021/prediction_05
+2025-06-27 20:21:20,620 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_021/prediction_05
+2025-06-27 20:21:21,127 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_021/pdf/prediction_05.pdf
+2025-06-27 20:21:21,129 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_061.csv
+2025-06-27 20:21:21,132 (calculate_score:203) [INFO]: [23/30] Calculated score: 0.8446245293650244
+2025-06-27 20:21:21,171 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:21,171 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_022/prediction_05
+2025-06-27 20:21:21,171 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_022/prediction_05
+2025-06-27 20:21:21,694 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_022/pdf/prediction_05.pdf
+2025-06-27 20:21:21,696 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_091.csv
+2025-06-27 20:21:21,699 (calculate_score:203) [INFO]: [24/30] Calculated score: 0.8158594592087519
+2025-06-27 20:21:21,740 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:21,741 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_023/prediction_05
+2025-06-27 20:21:21,741 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_023/prediction_05
+2025-06-27 20:21:22,233 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_023/pdf/prediction_05.pdf
+2025-06-27 20:21:22,235 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_090.csv
+2025-06-27 20:21:22,237 (calculate_score:203) [INFO]: [25/30] Calculated score: 0.8282709204535875
+2025-06-27 20:21:22,274 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:22,275 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_024/prediction_05
+2025-06-27 20:21:22,275 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_024/prediction_05
+2025-06-27 20:21:22,858 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_024/pdf/prediction_05.pdf
+2025-06-27 20:21:22,860 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_026.csv
+2025-06-27 20:21:22,863 (calculate_score:203) [INFO]: [26/30] Calculated score: 0.8474914301647649
+2025-06-27 20:21:22,908 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:22,908 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_025/prediction_05
+2025-06-27 20:21:22,908 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_025/prediction_05
+2025-06-27 20:21:23,495 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_025/pdf/prediction_05.pdf
+2025-06-27 20:21:23,498 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_079.csv
+2025-06-27 20:21:23,500 (calculate_score:203) [INFO]: [27/30] Calculated score: 0.8340122505763848
+2025-06-27 20:21:23,539 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:23,539 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_026/prediction_05
+2025-06-27 20:21:23,539 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_026/prediction_05
+2025-06-27 20:21:24,101 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_026/pdf/prediction_05.pdf
+2025-06-27 20:21:24,103 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_088.csv
+2025-06-27 20:21:24,106 (calculate_score:203) [INFO]: [28/30] Calculated score: 0.8329604554674871
+2025-06-27 20:21:24,148 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:24,148 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_027/prediction_05
+2025-06-27 20:21:24,148 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_027/prediction_05
+2025-06-27 20:21:24,741 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_027/pdf/prediction_05.pdf
+2025-06-27 20:21:24,743 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_019.csv
+2025-06-27 20:21:24,746 (calculate_score:203) [INFO]: [29/30] Calculated score: 0.8406740526820276
+2025-06-27 20:21:24,787 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:24,787 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_028/prediction_05
+2025-06-27 20:21:24,788 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_028/prediction_05
+2025-06-27 20:21:25,350 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_028/pdf/prediction_05.pdf
+2025-06-27 20:21:25,353 (model_utility:626) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_086.csv
+2025-06-27 20:21:25,355 (calculate_score:203) [INFO]: [30/30] Calculated score: 0.8258013770949487
+2025-06-27 20:21:25,392 (plot_utility:77) [DEBUG]: Making filename compatible to file system:
+2025-06-27 20:21:25,393 (plot_utility:78) [DEBUG]:        given filename: data/trained_model/test/latest/scores_000/plots_029/prediction_05
+2025-06-27 20:21:25,393 (plot_utility:79) [DEBUG]:   compatible filename: data/trained_model/test/latest/scores_000/plots_029/prediction_05
+2025-06-27 20:21:25,994 (plot_utility:67) [INFO]: Figure saved: data/trained_model/test/latest/scores_000/plots_029/pdf/prediction_05.pdf
+2025-06-27 20:21:26,000 (calculate_score:70) [INFO]: Calculated scores saved: data/trained_model/test/latest/scores_000/scores.toml
+2025-06-27 20:21:34,584 (calculate_score:131) [INFO]: Saved merged plots: data/trained_model/test/latest/scores_000/merged_prediction_05.pdf

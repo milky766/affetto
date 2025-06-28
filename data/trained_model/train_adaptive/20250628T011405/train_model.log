@@ -1,0 +1,50 @@
+2025-06-28 01:14:05,416 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 01:14:05,417 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 01:14:05,417 (event_logging:166) [DEBUG]: Log filename: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405/train_model.log
+2025-06-28 01:14:05,417 (event_logging:168) [DEBUG]: Command: python apps/train_model.py -v ../20241203T144115/step/sync/fast -j 5 --train-size 0.25 --seed 42 -m apps/config/adaptive_model.toml --label train_adaptive
+2025-06-28 01:14:05,418 (train_model:259) [INFO]: Output directory: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405
+2025-06-28 01:14:05,418 (data_handling:162) [DEBUG]: Directory created: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405
+2025-06-28 01:14:05,420 (data_handling:152) [DEBUG]: Symlink created: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/latest -> /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405
+2025-06-28 01:14:05,421 (data_handling:162) [DEBUG]: Directory created: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405/config
+2025-06-28 01:14:05,439 (data_handling:180) [DEBUG]: Model config copied: None -> /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405/config
+2025-06-28 01:14:05,439 (train_model:262) [DEBUG]: Parsed arguments: Namespace(base_dir='/mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data', joints=['5'], datasets=['../20241203T144115/step/sync/fast'], glob_pattern='**/*.csv', train_size=0.25, test_size=None, seed=42, shuffle=True, split_in_each_directory=False, model_config='apps/config/adaptive_model.toml', adapter=None, scaler=None, regressor=None, output=None, output_prefix='trained_model', overwrite=False, label='train_adaptive', sublabel=None, split_by_date=True, specify_date=None, make_latest_symlink=True, verbose=1)
+2025-06-28 01:14:05,440 (train_model:58) [DEBUG]: Resolved active joints: [5]
+2025-06-28 01:14:05,442 (train_model:62) [DEBUG]: Model config file loaded: apps/config/adaptive_model.toml
+2025-06-28 01:14:05,442 (train_model:65) [DEBUG]: Loading datasets with following condition:
+2025-06-28 01:14:05,443 (train_model:66) [DEBUG]:      Path list: ['../20241203T144115/step/sync/fast']
+2025-06-28 01:14:05,443 (train_model:67) [DEBUG]:   glob pattern: **/*.csv
+2025-06-28 01:14:05,465 (model_utility:725) [DEBUG]: Loading datasets from ['../20241203T144115/step/sync/fast/motion_data_058.csv', '../20241203T144115/step/sync/fast/motion_data_074.csv', '../20241203T144115/step/sync/fast/motion_data_088.csv', '../20241203T144115/step/sync/fast/motion_data_098.csv', '../20241203T144115/step/sync/fast/motion_data_054.csv', '../20241203T144115/step/sync/fast/motion_data_049.csv', '../20241203T144115/step/sync/fast/motion_data_006.csv', '../20241203T144115/step/sync/fast/motion_data_090.csv', '../20241203T144115/step/sync/fast/motion_data_011.csv', '../20241203T144115/step/sync/fast/motion_data_085.csv', '../20241203T144115/step/sync/fast/motion_data_041.csv', '../20241203T144115/step/sync/fast/motion_data_022.csv', '../20241203T144115/step/sync/fast/motion_data_019.csv', '../20241203T144115/step/sync/fast/motion_data_035.csv', '../20241203T144115/step/sync/fast/motion_data_064.csv', '../20241203T144115/step/sync/fast/motion_data_047.csv', '../20241203T144115/step/sync/fast/motion_data_012.csv', '../20241203T144115/step/sync/fast/motion_data_053.csv', '../20241203T144115/step/sync/fast/motion_data_014.csv', '../20241203T144115/step/sync/fast/motion_data_013.csv', '../20241203T144115/step/sync/fast/motion_data_066.csv', '../20241203T144115/step/sync/fast/motion_data_036.csv', '../20241203T144115/step/sync/fast/motion_data_065.csv', '../20241203T144115/step/sync/fast/motion_data_077.csv', '../20241203T144115/step/sync/fast/motion_data_008.csv']
+2025-06-28 01:14:06,730 (model_utility:729) [INFO]: 25 datasets loaded in total
+2025-06-28 01:14:06,730 (model_utility:646) [DEBUG]: Loaded data adapter: MultiHorizonHandler(MultiHorizonParams(active_joints=[5], dt=0.03333333333, ctrl_step=1, max_preview_step=2))
+2025-06-28 01:14:06,731 (model_utility:656) [DEBUG]: Loaded scaler: StandardScaler()
+2025-06-28 01:14:06,741 (model_utility:664) [DEBUG]: Loaded regressor: MLPRegressor(activation='tanh', hidden_layer_sizes=(100, 100), max_iter=800)
+2025-06-28 01:14:06,742 (train_model:84) [INFO]: Training model...
+2025-06-28 01:14:06,868 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_058.csv
+2025-06-28 01:14:06,869 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_074.csv
+2025-06-28 01:14:06,870 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_088.csv
+2025-06-28 01:14:06,871 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_098.csv
+2025-06-28 01:14:06,871 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_054.csv
+2025-06-28 01:14:06,873 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_049.csv
+2025-06-28 01:14:06,874 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_006.csv
+2025-06-28 01:14:06,876 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_090.csv
+2025-06-28 01:14:06,878 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_011.csv
+2025-06-28 01:14:06,880 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_085.csv
+2025-06-28 01:14:06,883 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_041.csv
+2025-06-28 01:14:06,886 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_022.csv
+2025-06-28 01:14:06,888 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_019.csv
+2025-06-28 01:14:06,892 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_035.csv
+2025-06-28 01:14:06,895 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_064.csv
+2025-06-28 01:14:06,898 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_047.csv
+2025-06-28 01:14:06,902 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_012.csv
+2025-06-28 01:14:06,905 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_053.csv
+2025-06-28 01:14:06,908 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_014.csv
+2025-06-28 01:14:06,912 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_013.csv
+2025-06-28 01:14:06,915 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_066.csv
+2025-06-28 01:14:06,917 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_036.csv
+2025-06-28 01:14:06,921 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_065.csv
+2025-06-28 01:14:06,923 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_077.csv
+2025-06-28 01:14:06,925 (model_utility:751) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_008.csv
+2025-06-28 01:14:06,926 (model_utility:798) [DEBUG]: x_train.shape = (89950, 8)
+2025-06-28 01:14:06,926 (model_utility:799) [DEBUG]: y_train.shape = (89950, 2)
+2025-06-28 01:20:15,227 (train_model:86) [DEBUG]: Training has done
+2025-06-28 01:20:15,246 (train_model:101) [INFO]: Trained model saved: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T011405/trained_model.joblib
