@@ -20,7 +20,7 @@
   dt = 0.03333333333
   ctrl_step = 1
   min_preview_step = 1 
-  max_preview_step = 30 #なぜか20だと上手く行くが,30や100だと全てのτに対してR^2が極端に小さな値になる
+  max_preview_step = 20
 
 
   # --- ここまでは既存の設定と同じでOK ---

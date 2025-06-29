@@ -1,0 +1,82 @@
+2025-06-28 20:26:20,624 (event_logging:164) [DEBUG]: Start event logging
+2025-06-28 20:26:20,624 (event_logging:165) [DEBUG]: Logger name: __main__
+2025-06-28 20:26:20,624 (event_logging:166) [DEBUG]: Log filename: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620/train_model.log
+2025-06-28 20:26:20,624 (event_logging:168) [DEBUG]: Command: python apps/train_model.py -v ../20241203T144115/step/sync/fast -j 5 --train-size 0.25 --seed 42 -m apps/config/adaptive_model.toml --label train_adaptive
+2025-06-28 20:26:20,625 (train_model:257) [INFO]: Output directory: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620
+2025-06-28 20:26:20,625 (data_handling:162) [DEBUG]: Directory created: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620
+2025-06-28 20:26:20,628 (data_handling:152) [DEBUG]: Symlink created: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/latest -> /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620
+2025-06-28 20:26:20,629 (data_handling:162) [DEBUG]: Directory created: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620/config
+2025-06-28 20:26:20,649 (data_handling:180) [DEBUG]: Model config copied: None -> /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620/config
+2025-06-28 20:26:20,650 (train_model:260) [DEBUG]: Parsed arguments: Namespace(base_dir='/mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data', joints=['5'], datasets=['../20241203T144115/step/sync/fast'], glob_pattern='**/*.csv', train_size=0.25, test_size=None, seed=42, shuffle=True, split_in_each_directory=False, model_config='apps/config/adaptive_model.toml', adapter=None, scaler=None, regressor=None, output=None, output_prefix='trained_model', overwrite=False, label='train_adaptive', sublabel=None, split_by_date=True, specify_date=None, make_latest_symlink=True, verbose=1)
+2025-06-28 20:26:20,650 (train_model:58) [DEBUG]: Resolved active joints: [5]
+2025-06-28 20:26:20,653 (train_model:62) [DEBUG]: Model config file loaded: apps/config/adaptive_model.toml
+2025-06-28 20:26:20,653 (train_model:65) [DEBUG]: Loading datasets with following condition:
+2025-06-28 20:26:20,653 (train_model:66) [DEBUG]:      Path list: ['../20241203T144115/step/sync/fast']
+2025-06-28 20:26:20,653 (train_model:67) [DEBUG]:   glob pattern: **/*.csv
+2025-06-28 20:26:20,672 (model_utility:674) [DEBUG]: Loading datasets from ['../20241203T144115/step/sync/fast/motion_data_058.csv', '../20241203T144115/step/sync/fast/motion_data_074.csv', '../20241203T144115/step/sync/fast/motion_data_088.csv', '../20241203T144115/step/sync/fast/motion_data_098.csv', '../20241203T144115/step/sync/fast/motion_data_054.csv', '../20241203T144115/step/sync/fast/motion_data_049.csv', '../20241203T144115/step/sync/fast/motion_data_006.csv', '../20241203T144115/step/sync/fast/motion_data_090.csv', '../20241203T144115/step/sync/fast/motion_data_011.csv', '../20241203T144115/step/sync/fast/motion_data_085.csv', '../20241203T144115/step/sync/fast/motion_data_041.csv', '../20241203T144115/step/sync/fast/motion_data_022.csv', '../20241203T144115/step/sync/fast/motion_data_019.csv', '../20241203T144115/step/sync/fast/motion_data_035.csv', '../20241203T144115/step/sync/fast/motion_data_064.csv', '../20241203T144115/step/sync/fast/motion_data_047.csv', '../20241203T144115/step/sync/fast/motion_data_012.csv', '../20241203T144115/step/sync/fast/motion_data_053.csv', '../20241203T144115/step/sync/fast/motion_data_014.csv', '../20241203T144115/step/sync/fast/motion_data_013.csv', '../20241203T144115/step/sync/fast/motion_data_066.csv', '../20241203T144115/step/sync/fast/motion_data_036.csv', '../20241203T144115/step/sync/fast/motion_data_065.csv', '../20241203T144115/step/sync/fast/motion_data_077.csv', '../20241203T144115/step/sync/fast/motion_data_008.csv']
+2025-06-28 20:26:21,937 (model_utility:678) [INFO]: 25 datasets loaded in total
+2025-06-28 20:26:21,937 (model_utility:595) [DEBUG]: Loaded data adapter: SingleShotMultiHorizonHandler(SingleShotMultiHorizonParams(active_joints=[5], dt=0.03333333333, ctrl_step=1, min_preview_step=1, max_preview_step=30))
+2025-06-28 20:26:21,937 (model_utility:605) [DEBUG]: Loaded scaler: StandardScaler()
+2025-06-28 20:26:21,941 (model_utility:613) [DEBUG]: Loaded regressor: MLPRegressor(activation='tanh', hidden_layer_sizes=(100, 100), max_iter=2000)
+2025-06-28 20:26:21,941 (train_model:82) [INFO]: Training model...
+2025-06-28 20:26:21,960 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_008.csv
+2025-06-28 20:26:21,976 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_090.csv
+2025-06-28 20:26:21,992 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_058.csv
+2025-06-28 20:26:22,009 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_088.csv
+2025-06-28 20:26:22,026 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_036.csv
+2025-06-28 20:26:22,045 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_035.csv
+2025-06-28 20:26:22,062 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_066.csv
+2025-06-28 20:26:22,080 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_085.csv
+2025-06-28 20:26:22,095 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_065.csv
+2025-06-28 20:26:22,113 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_047.csv
+2025-06-28 20:26:22,127 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_064.csv
+2025-06-28 20:26:22,145 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_013.csv
+2025-06-28 20:26:22,160 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_041.csv
+2025-06-28 20:26:22,180 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_012.csv
+2025-06-28 20:26:22,198 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_022.csv
+2025-06-28 20:26:22,219 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_014.csv
+2025-06-28 20:26:22,234 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_098.csv
+2025-06-28 20:26:22,254 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_074.csv
+2025-06-28 20:26:22,254 (model_utility:746) [DEBUG]: x_train.shape = (31878, 34)
+2025-06-28 20:26:22,255 (model_utility:747) [DEBUG]: y_train.shape = (31878, 60)
+2025-06-28 20:26:30,044 (model_utility:754) [INFO]: Finding best initial tau from validation set...
+2025-06-28 20:26:30,059 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_011.csv
+2025-06-28 20:26:30,073 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_006.csv
+2025-06-28 20:26:30,087 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_049.csv
+2025-06-28 20:26:30,102 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_077.csv
+2025-06-28 20:26:30,115 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_019.csv
+2025-06-28 20:26:30,129 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_053.csv
+2025-06-28 20:26:30,142 (model_utility:700) [DEBUG]: Loaded dataset: ../20241203T144115/step/sync/fast/motion_data_054.csv
+2025-06-28 20:26:30,242 (model_utility:773) [INFO]:   - R^2 score for tau=1: -0.0001
+2025-06-28 20:26:30,247 (model_utility:773) [INFO]:   - R^2 score for tau=2: -0.0001
+2025-06-28 20:26:30,248 (model_utility:773) [INFO]:   - R^2 score for tau=3: -0.0001
+2025-06-28 20:26:30,253 (model_utility:773) [INFO]:   - R^2 score for tau=4: -0.0001
+2025-06-28 20:26:30,254 (model_utility:773) [INFO]:   - R^2 score for tau=5: -0.0001
+2025-06-28 20:26:30,256 (model_utility:773) [INFO]:   - R^2 score for tau=6: -0.0001
+2025-06-28 20:26:30,257 (model_utility:773) [INFO]:   - R^2 score for tau=7: -0.0002
+2025-06-28 20:26:30,265 (model_utility:773) [INFO]:   - R^2 score for tau=8: -0.0002
+2025-06-28 20:26:30,269 (model_utility:773) [INFO]:   - R^2 score for tau=9: -0.0002
+2025-06-28 20:26:30,271 (model_utility:773) [INFO]:   - R^2 score for tau=10: -0.0002
+2025-06-28 20:26:30,272 (model_utility:773) [INFO]:   - R^2 score for tau=11: -0.0002
+2025-06-28 20:26:30,273 (model_utility:773) [INFO]:   - R^2 score for tau=12: -0.0002
+2025-06-28 20:26:30,274 (model_utility:773) [INFO]:   - R^2 score for tau=13: -0.0002
+2025-06-28 20:26:30,275 (model_utility:773) [INFO]:   - R^2 score for tau=14: -0.0001
+2025-06-28 20:26:30,277 (model_utility:773) [INFO]:   - R^2 score for tau=15: -0.0001
+2025-06-28 20:26:30,284 (model_utility:773) [INFO]:   - R^2 score for tau=16: -0.0001
+2025-06-28 20:26:30,288 (model_utility:773) [INFO]:   - R^2 score for tau=17: -0.0001
+2025-06-28 20:26:30,290 (model_utility:773) [INFO]:   - R^2 score for tau=18: -0.0001
+2025-06-28 20:26:30,291 (model_utility:773) [INFO]:   - R^2 score for tau=19: -0.0001
+2025-06-28 20:26:30,293 (model_utility:773) [INFO]:   - R^2 score for tau=20: -0.0001
+2025-06-28 20:26:30,294 (model_utility:773) [INFO]:   - R^2 score for tau=21: -0.0001
+2025-06-28 20:26:30,301 (model_utility:773) [INFO]:   - R^2 score for tau=22: -0.0001
+2025-06-28 20:26:30,308 (model_utility:773) [INFO]:   - R^2 score for tau=23: -0.0001
+2025-06-28 20:26:30,309 (model_utility:773) [INFO]:   - R^2 score for tau=24: -0.0001
+2025-06-28 20:26:30,310 (model_utility:773) [INFO]:   - R^2 score for tau=25: -0.0001
+2025-06-28 20:26:30,311 (model_utility:773) [INFO]:   - R^2 score for tau=26: -0.0001
+2025-06-28 20:26:30,313 (model_utility:773) [INFO]:   - R^2 score for tau=27: -0.0001
+2025-06-28 20:26:30,314 (model_utility:773) [INFO]:   - R^2 score for tau=28: -0.0001
+2025-06-28 20:26:30,316 (model_utility:773) [INFO]:   - R^2 score for tau=29: -0.0001
+2025-06-28 20:26:30,317 (model_utility:773) [INFO]:   - R^2 score for tau=30: -0.0001
+2025-06-28 20:26:30,317 (model_utility:777) [INFO]: Best initial tau found: 25 (score: -0.0001)
+2025-06-28 20:26:30,320 (train_model:84) [DEBUG]: Training has done
+2025-06-28 20:26:30,332 (train_model:99) [INFO]: Trained model saved: /mnt/c/Users/HosodaLab2/OneDrive - Kyoto University/University/Reserch/reservoir/affeto/affetto-nn-ctrl-7090826/data/trained_model/train_adaptive/20250628T202620/trained_model.joblib
